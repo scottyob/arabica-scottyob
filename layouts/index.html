@@ -8,9 +8,19 @@
     <div class="extra-pagination">
       {{ partial "pagination.html" . }}
     </div>
-		{{ range $paginator.Pages }}
-      {{ .Render "summary" }}
-		{{ end }}
+    {{ $.Scratch.Set "counter" 0 }}
+    {{ range $paginator.Pages }}
+      {{ if .Site.Params.smallPictures }}
+        {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+        {{ if eq ( mod ($.Scratch.Get "counter") 2 ) 1 }}
+          {{ .Render "summaryLeft" }}
+        {{ else }}
+          {{ .Render "summaryRight" }}
+        {{ end }}
+      {{ else }}
+        {{ .Render "summary" }}
+      {{ end }}
+    {{ end }}
     {{ partial "pagination.html" . }}
 	</main>
 {{ end }}
