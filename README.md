@@ -1,4 +1,11 @@
-This is a port of the [Arabica theme for Ghost](https://github.com/slunsford/arabica) to Hugo. You can find a live demo [here](https://arabica.netlify.com).
+This is a port of the [Arabica theme for Ghost](https://github.com/slunsford/arabica) to Hugo. You can find a live demo at the [original theme page](https://github.com/nirocfz/arabica)
+
+This fork hosts changes for my website https://www.scottyob.com/
+
+## Changes
+- Added ability shrink the header photos, make them alternating (add smallPictures = true to your params.)
+- Added FontAwesome.
+- Added media listing page.
 
 ![Preview](https://raw.githubusercontent.com/nirocfz/arabica/master/images/screenshot.png)
 
