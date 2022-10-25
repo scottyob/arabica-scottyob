@@ -1,25 +1,38 @@
+{{ define "body_class" }}big{{ end }}
+
 {{ define "main" }}
 
 <style>
     
     .media-container {
         display: flex;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
+        justify-content: center;
     }
 
     .media-entry {
         border: 1px solid #dfe1e1;
         margin: 0.5rem;
+        width: 250px;
     }
 
     .media-entry a {
         font-weight: 700;
         font-size: 1rem;
-        line-height: 1.25;;
+        line-height: 1.25;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 300px;
     }
 
     .media-title {
         padding: 10px;
+    }
+
+    .image-container {
+        flex-grow: 1;
     }
 
 </style>
@@ -32,16 +45,16 @@
         {{ $imageLoc := (printf "%s%s" .RelPermalink "img.jpg") }}
         {{ $image := .Resources.GetMatch "img.jpg" }}
         {{ if ne $image nil }}
-            {{ $image = $image.Resize "250x" }}
+            {{ $image = $image.Fill "250x250" }}
         {{ end }}
         <div class="media-entry">
             <a href="{{ .RelPermalink }}">
-            <div>
-                {{ if $image }}
-                <img src="{{ $image.RelPermalink }}" />
-                {{ end }}
-            </div>
-            <div class="media-title">{{ .Title }}</div>
+                <div class="image-container">
+                    {{ if $image }}
+                    <img src="{{ $image.RelPermalink }}" />
+                    {{ end }}
+                </div>
+                <div class="media-title">{{ .Title }}</div>
             </a>
         </div>
 
